@@ -54,3 +54,47 @@ max-width: 1000px;
 .movie-cover {
   width: 100%;
 }
+form 
+  {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    outline: none;
+    background-color:cornflowerblue; 
+    box-sizing: border-box;
+  }
+
+.prev-btn {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  outline: none;
+  background-color:cornflowerblue; 
+  box-sizing: border-box;
+}
+.next-btn{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  outline: none;
+  background-color:cornflowerblue; 
+  box-sizing: border-box;
+}
