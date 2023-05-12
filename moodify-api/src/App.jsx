@@ -45,7 +45,7 @@ function App() {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     setCurrentPage(1);
-    fetchMovies();n
+    fetchMovies();
   };
 
   useEffect(() => {
