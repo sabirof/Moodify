@@ -8,8 +8,10 @@ function MovieCard ({movie}) {
         {movie.poster_path ? <img className='movie-cover' src={`${imgPath}${movie.poster_path}`}/>
         : null}
     <h5 className='movie-title'>{movie.title}</h5>
+    <p className="movie-popularity">score: {movie.popularity}</p>
   </div>
   )
+  div
 }
 
 export default MovieCard

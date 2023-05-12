@@ -57,13 +57,16 @@ function App() {
       <MovieCard
         key={movie.id}
         movie={movie}
+        popularity={movie.popularity}
       />
     ))
   );
 
   return (
     <div className='App'>
-      <h1>Moodify App</h1>
+      <a href="/http://127.0.0.1:5173/" className="homepage-link">
+        <h1>Moodify App</h1>
+      </a>
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
           className='search-bar'
@@ -71,7 +74,7 @@ function App() {
           value={searchQuery}
           onChange={handleSearchChange}
           placeholder="Search movies..."
-        />
+          />
         <button type="submit">Search</button>
       </form>
       {movies.length > 0 ? (
