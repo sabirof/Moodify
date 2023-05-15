@@ -17,7 +17,7 @@ function App() {
       } else {
         url = `${API_URL}/movie/popular?api_key=${API_KEY}&page=${currentPage}`;
       }
-      
+
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -45,12 +45,16 @@ function App() {
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     setCurrentPage(1);
-    fetchMovies();
   };
 
   useEffect(() => {
     fetchMovies();
-  }, [currentPage]);
+  }, [currentPage, searchQuery]);
+
+  useEffect(() => {
+    // Only fetch movies when currentPage or searchQuery changes
+    fetchMovies();
+  }, [currentPage, searchQuery]);
 
   const renderMovies = () => (
     movies.map(movie => (
@@ -65,29 +69,41 @@ function App() {
   return (
     <div className='App'>
       <a href="/http://127.0.0.1:5173/" className="homepage-link">
+        
         <h1>Moodify App</h1>
+        <div className="navbar">
+  
+  <ul className="navbar-nav">
+    <li className="nav-item"><a href="/movies" className="nav-link">Movies</a></li>
+    <li className="nav-item"><a href="/genres" className="nav-link">Genres</a></li>
+    <li className="nav-item"><a href="/about" className="nav-link">About</a></li>
+  </ul>
+</div>
+
       </a>
       <form onSubmit={handleSearchSubmit} className="search-form">
-        <input
-          className='search-bar'
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search movies..."
-          />
-        <button type="submit">Search</button>
-      </form>
+  <input
+    className='search-bar'
+    type="text"
+    value={searchQuery}
+    onChange={handleSearchChange}
+    placeholder="Search movies..."
+  />
+  <button type="submit" className="search-button">Search</button>
+</form>
       {movies.length > 0 ? (
         <div className='container'>{renderMovies()}</div>
       ) : (
         <p>No movies found.</p>
       )}
-      {currentPage > 1 && (
-        <button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
-      )}
-      {currentPage < totalPages && (
-        <button className='next-btn' onClick={handleNextPage}>Next Page</button>
-      )}
+      <div className='btn-container'>
+        {currentPage > 1 && (
+          <button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
+        )}
+        {currentPage < totalPages && (
+          <button className='next-btn' onClick={handleNextPage}>Next Page</button>
+        )}
+      </div>
     </div>
   );
 }
