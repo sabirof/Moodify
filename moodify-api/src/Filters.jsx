@@ -6,8 +6,8 @@ function Filters({ handleGenreChange, handleYearChange, handlePopularityChange }
       <select onChange={handleGenreChange}>
         <option value="">All Genres</option>
         <option value="28">Action</option>
-        <option value="35">Comedy</option>
-        <option value="18">Drama</option>
+        <option value="35">Classic Chokehold Comedy</option>
+        <option value="18">Drama Llama Ding Dong Deluxe</option>
         <option value="53">Thriller</option>
         {/* Add more genre options here */}
       </select>
