@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieCard from './MovieCard';
+import Filters from './Filters';
 
 function App() {
   const API_URL = 'https://api.themoviedb.org/3';
@@ -8,6 +9,9 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [genreFilter, setGenreFilter] = useState('');
+  const [yearFilter, setYearFilter] = useState('');
+  const [popularityFilter, setPopularityFilter] = useState('');
 
   const fetchMovies = async () => {
     try {
@@ -15,9 +19,25 @@ function App() {
       if (searchQuery) {
         url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${currentPage}`;
       } else {
-        url = `${API_URL}/movie/popular?api_key=${API_KEY}&page=${currentPage}`;
+        url = `${API_URL}/discover/movie?api_key=${API_KEY}&page=${currentPage}`;
+        
+        // Apply filters
+        const filterParams = [];
+        if (genreFilter) {
+          filterParams.push(`with_genres=${genreFilter}`);
+        }
+        if (yearFilter) {
+          filterParams.push(`year=${yearFilter}`);
+        }
+        if (popularityFilter) {
+          filterParams.push(`vote_average.gte=${popularityFilter}`);
+        }
+  
+        if (filterParams.length > 0) {
+          url += `&${filterParams.join('&')}`;
+        }
       }
-
+  
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -29,6 +49,7 @@ function App() {
       console.error('Error fetching movies:', error);
     }
   };
+  
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -47,17 +68,24 @@ function App() {
     setCurrentPage(1);
   };
 
-  useEffect(() => {
-    fetchMovies();
-  }, [currentPage, searchQuery]);
+  const handleGenreChange = (event) => {
+    setGenreFilter(event.target.value);
+  };
+
+  const handleYearChange = (event) => {
+    setYearFilter(event.target.value);
+  };
+
+  const handlePopularityChange = (event) => {
+    setPopularityFilter(event.target.value);
+  };
 
   useEffect(() => {
-    // Only fetch movies when currentPage or searchQuery changes
     fetchMovies();
-  }, [currentPage, searchQuery]);
+  }, [currentPage, searchQuery, genreFilter, yearFilter, popularityFilter]);
 
   const renderMovies = () => (
-    movies.map(movie => (
+    movies.map((movie) => (
       <MovieCard
         key={movie.id}
         movie={movie}
@@ -69,43 +97,45 @@ function App() {
   return (
     <div className='App'>
       <a href="/http://127.0.0.1:5173/" className="homepage-link">
-        
         <h1>Moodify App</h1>
-        <div className="navbar">
-  
-  <ul className="navbar-nav">
-    <li className="nav-item"><a href="/movies" className="nav-link">Movies</a></li>
-    <li className="nav-item"><a href="/genres" className="nav-link">Genres</a></li>
-    <li className="nav-item"><a href="/about" className="nav-link">About</a></li>
-  </ul>
-</div>
-
       </a>
-      <form onSubmit={handleSearchSubmit} className="search-form">
-  <input
-    className='search-bar'
-    type="text"
-    value={searchQuery}
-    onChange={handleSearchChange}
-    placeholder="Search movies..."
-  />
-  <button type="submit" className="search-button">Search</button>
-</form>
-      {movies.length > 0 ? (
-        <div className='container'>{renderMovies()}</div>
-      ) : (
-        <p>No movies found.</p>
-      )}
-      <div className='btn-container'>
-        {currentPage > 1 && (
-          <button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
-        )}
-        {currentPage < totalPages && (
-          <button className='next-btn' onClick={handleNextPage}>Next Page</button>
-        )}
+      <div className="navbar">
+        <ul className="navbar-nav">
+          <li className="nav-item"><a href="/movies" className="nav-link">Movies</a></li>
+          <li className="nav-item"><a href="/genres" className="nav-link">Genres</a></li>
+          <li className="nav-item"><a href="/about" className="nav-link">About</a></li>
+        </ul>
       </div>
-    </div>
-  );
+      <form onSubmit={handleSearchSubmit} className="search-form">
+        <input
+          className='search-bar'
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Search movies..."
+        />
+        <button type="submit" className="search-button">Search</button>
+</form>
+<Filters
+     handleGenreChange={handleGenreChange}
+     handleYearChange={handleYearChange}
+     handlePopularityChange={handlePopularityChange}
+   />
+{movies.length > 0 ? (
+<div className='container'>{renderMovies()}</div>
+) : (
+<p>No movies found.</p>
+)}
+<div className='btn-container'>
+{currentPage > 1 && (
+<button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
+)}
+{currentPage < totalPages && (
+<button className='next-btn' onClick={handleNextPage}>Next Page</button>
+)}
+</div>
+</div>
+);
 }
 
 export default App;

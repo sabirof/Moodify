@@ -1,4 +1,3 @@
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,7 +12,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,7 +22,6 @@ a:hover {
   color: #535bf2;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -32,7 +29,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
 
 .container {
   max-width: 1000px;
@@ -46,8 +42,10 @@ body {
 .App {
   width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
-
 
 h1 {
   max-width: 1000px;
@@ -55,14 +53,15 @@ h1 {
   text-align: center;
   font-size: 3.2em;
   line-height: 1.1;
+  margin-top: 30px;
 }
 
 /* Movie Card */
 .movie-card {
   position: relative;
-  display: inline-block;
-  width: 250px;
-  margin: 10px;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
 }
 
 .movie-cover {
@@ -117,6 +116,7 @@ h1 {
 .btn-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 /* Search Form */
@@ -133,6 +133,8 @@ h1 {
   border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 100%;
 }
 
 .search-bar:focus {
@@ -140,64 +142,59 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
- 
-
-
 .search-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #f5c518;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+background-color: #f5c518;
+color: black;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-  background-color: #ffd700;
+background-color: #ffd700;
 }
+
 /* Navbar */
 .navbar {
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+background-color: rgba(0, 0, 0, 0.8);
+padding: 10px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+z-index: 1;
 }
 
 .navbar-brand {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+font-size: 20px;
+font-weight: bold;
+color: white;
+text-decoration: none;
 }
 
 .navbar-nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  margin-right: 20px; 
+list-style: none;
+display: flex;
+align-items: center;
+margin: 0;
+padding: 0;
 }
 
 .nav-item {
-  margin-right: 10px;
+margin-right: 10px;
 }
 
 .nav-link {
-  font-size: 16px;
-  color: white;
-  text-decoration: none;
+font-size: 16px;
+color: white;
+text-decoration: none;
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
-
