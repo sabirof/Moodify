@@ -25,7 +25,9 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
   place-items: center;
+  width: 100vw;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -41,7 +43,7 @@ body {
 
 .App {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -60,7 +62,8 @@ h1 {
 .movie-card {
   position: relative;
   width: 100%;
-  max-width: 250px;
+  max-width: 228.75px;
+  min-height: 358.13px;
   margin: 0 auto;
 }
 

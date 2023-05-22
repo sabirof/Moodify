@@ -37,12 +37,14 @@ function App() {
           url += `&${filterParams.join('&')}`;
         }
       }
+      console.log(url);
   
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
+      console.log(data);
       setMovies(data.results);
       setTotalPages(data.total_pages);
     } catch (error) {
