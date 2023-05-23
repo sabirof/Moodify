@@ -1,13 +1,11 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard';
 import Filters from '../Filters';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
-
 function Homepage() {
-    
-    const API_URL = 'https://api.themoviedb.org/3';
+  const API_URL = 'https://api.themoviedb.org/3';
   const API_KEY = '4909c193bcb0b13deddde40b3469602f';
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -24,7 +22,7 @@ function Homepage() {
         url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${currentPage}`;
       } else {
         url = `${API_URL}/discover/movie?api_key=${API_KEY}&page=${currentPage}`;
-        
+
         // Apply filters
         const filterParams = [];
         if (genreFilter) {
@@ -36,13 +34,13 @@ function Homepage() {
         if (popularityFilter) {
           filterParams.push(`vote_average.gte=${popularityFilter}`);
         }
-  
+
         if (filterParams.length > 0) {
           url += `&${filterParams.join('&')}`;
         }
       }
       console.log(url);
-  
+
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,7 +53,6 @@ function Homepage() {
       console.error('Error fetching movies:', error);
     }
   };
-  
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -95,29 +92,17 @@ function Homepage() {
       <MovieCard
         key={movie.id}
         movie={movie}
-        popularity={movie.popularity}
+        imdb_score={movie.vote_average} // Replace popularity with vote_average
       />
     ))
   );
+
   return (
     <div className='App'>
       <a href="/http://127.0.0.1:5173/" className="homepage-link">
         <h1>Moodify App</h1>
       </a>
       <Navbar />
-      {/* <div className="navbar">
-      <ul className="navbar-nav">
-  <li className="nav-item">
-    <Link to="/genres" className="nav-link">Genres</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/login" className="nav-link">Login</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/about" className="nav-link">About</Link>
-  </li>
-</ul>
-      </div> */}
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
           className='search-bar'
@@ -127,28 +112,27 @@ function Homepage() {
           placeholder="Search movies..."
         />
         <button type="submit" className="search-button">Search</button>
-</form>
-<Filters
-     handleGenreChange={handleGenreChange}
-     handleYearChange={handleYearChange}
-     handlePopularityChange={handlePopularityChange}
-   />
-{movies.length > 0 ? (
-<div className='container'>{renderMovies()}</div>
-) : (
-<p>No movies found.</p>
-)}
-<div className='btn-container'>
-{currentPage > 1 && (
-<button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
-)}
-{currentPage < totalPages && (
-<button className='next-btn' onClick={handleNextPage}>Next Page</button>
-)}
-</div>
-</div>
-  )
-  
+      </form>
+      <Filters
+        handleGenreChange={handleGenreChange}
+        handleYearChange={handleYearChange}
+        handlePopularityChange={handlePopularityChange}
+      />
+      {movies.length > 0 ? (
+        <div className='container'>{renderMovies()}</div>
+      ) : (
+        <p>No movies found.</p>
+      )}
+      <div className='btn-container'>
+        {currentPage > 1 && (
+          <button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
+        )}
+        {currentPage < totalPages && (
+          <button className='next-btn' onClick={handleNextPage}>Next Page</button>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default Homepage
+export default Homepage;

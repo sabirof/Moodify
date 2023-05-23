@@ -72,7 +72,7 @@ h1 {
   height: auto;
 }
 
-.popularity-overlay {
+.imdb-score {
   position: absolute;
   top: 5px;
   right: 5px;

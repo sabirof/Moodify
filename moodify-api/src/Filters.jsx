@@ -40,7 +40,7 @@ function Filters({ handleGenreChange, handleYearChange, handlePopularityChange }
         <option value="2013">2013</option>
       </select>
       <select onChange={handlePopularityChange}>
-        <option value="">All Popularity</option>
+        <option value="">IMDB score</option>
         <option value="7">7+</option>
         <option value="8">8+</option>
         <option value="9">9+</option>

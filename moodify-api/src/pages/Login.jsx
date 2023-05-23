@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('Hamburger');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
   
 
   const handleUsernameChange = (event) => {
@@ -20,14 +20,14 @@ function Login() {
     // Perform login logic here (e.g., send login request to server)
     // For simplicity, let's just check if username and password match 'admin'
     if (username === 'admin' && password === 'admin') {
-      setLoggedIn(true);
+      setLoggedIn(false);
     } else {
       alert('Invalid username or password');
     }
   };
 
   const handleLogout = () => {
-    setLoggedIn(false);
+    setLoggedIn(true);
     setUsername('');
     setPassword('');
   };
