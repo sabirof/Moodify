@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 function Login() {
-  const [username, setUsername] = useState('Hamburger');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setLoggedIn] = useState(true);
-  
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isRegistering, setRegistering] = useState(false);
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -17,26 +17,59 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // Perform login logic here (e.g., send login request to server)
-    // For simplicity, let's just check if username and password match 'admin'
-    if (username === 'admin' && password === 'admin') {
-      setLoggedIn(false);
+
+    if (email === 'admin@example.com' && password === 'admin') {
+      setLoggedIn(true);
     } else {
-      alert('Invalid username or password');
+      alert('Invalid email or password');
+    }
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    // Add your registration logic here
+    if (email && password) {
+      // Perform the registration process (e.g., send data to server, update state)
+      setLoggedIn(true);
+    } else {
+      alert('Please enter a valid email and password');
     }
   };
 
   const handleLogout = () => {
-    setLoggedIn(true);
-    setUsername('');
+    setLoggedIn(false);
+    setEmail('');
     setPassword('');
   };
 
   if (isLoggedIn) {
     return (
       <div>
-        <h1>Welcome, {username}!</h1>
+        <h1>Welcome, {email}!</h1>
         <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
+
+  if (isRegistering) {
+    return (
+      <div>
+        <h1>Registration Page</h1>
+        <form onSubmit={handleRegister}>
+          <label>
+            Email:
+            <input type="email" value={email} onChange={handleEmailChange} />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </label>
+          <br />
+          <button type="submit">Register</button>
+          <button onClick={() => setRegistering(false)}>Back to Login</button>
+        </form>
       </div>
     );
   }
@@ -46,8 +79,8 @@ function Login() {
       <h1>Login Page</h1>
       <form onSubmit={handleLogin}>
         <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
+          Email:
+          <input type="email" value={email} onChange={handleEmailChange} />
         </label>
         <br />
         <label>
@@ -56,6 +89,7 @@ function Login() {
         </label>
         <br />
         <button type="submit">Login</button>
+        <button onClick={() => setRegistering(true)}>Register</button>
       </form>
     </div>
   );
