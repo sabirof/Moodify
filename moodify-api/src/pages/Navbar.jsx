@@ -22,7 +22,7 @@ function Navbar() {
           {user ? (
             <>
               <span className="nav-link" style={{ color: 'green' }}>Logged in as: {user.email}</span>
-              <button className="nav-link" onClick={handleLogout}>Logout</button>
+              <button className="nav-link" onClick={handleLogout} style={{ color: 'red' }}>Logout</button>
             </>
           ) : (
             <>
