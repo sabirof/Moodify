@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard';
 import Filters from '../Filters';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 function Homepage() {
+  const { user } = useContext(AuthContext);
   const API_URL = 'https://api.themoviedb.org/3';
   const API_KEY = '4909c193bcb0b13deddde40b3469602f';
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,6 +17,8 @@ function Homepage() {
   const [genreFilter, setGenreFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
   const [popularityFilter, setPopularityFilter] = useState('');
+
+  console.log('homepage');
 
   const fetchMovies = async () => {
     try {
@@ -87,22 +92,16 @@ function Homepage() {
     fetchMovies();
   }, [currentPage, searchQuery, genreFilter, yearFilter, popularityFilter]);
 
-  const renderMovies = () => (
+  const renderMovies = () =>
     movies.map((movie) => (
-      <MovieCard
-        key={movie.id}
-        movie={movie}
-        imdb_score={movie.vote_average} // Replace popularity with vote_average
-      />
-    ))
-  );
+      <MovieCard key={movie.id} movie={movie} imdb_score={movie.vote_average} />
+    ));
 
   return (
     <div className='App'>
       <a href="/http://127.0.0.1:5173/" className="homepage-link">
         <h1>Moodify App</h1>
       </a>
-      <Navbar />
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
           className='search-bar'
@@ -111,13 +110,18 @@ function Homepage() {
           onChange={handleSearchChange}
           placeholder="Search movies..."
         />
-        <button type="submit" className="search-button">Search</button>
+        <button type="submit" className="search-button">
+          Search
+        </button>
       </form>
       <Filters
         handleGenreChange={handleGenreChange}
         handleYearChange={handleYearChange}
         handlePopularityChange={handlePopularityChange}
       />
+      {user && (
+        <p>Welcome, {user.email}! You are logged in.</p>
+      )}
       {movies.length > 0 ? (
         <div className='container'>{renderMovies()}</div>
       ) : (
@@ -125,10 +129,14 @@ function Homepage() {
       )}
       <div className='btn-container'>
         {currentPage > 1 && (
-          <button className='prev-btn' onClick={handlePrevPage}>Previous Page</button>
+          <button className='prev-btn' onClick={handlePrevPage}>
+            Previous Page
+          </button>
         )}
         {currentPage < totalPages && (
-          <button className='next-btn' onClick={handleNextPage}>Next Page</button>
+          <button className='next-btn' onClick={handleNextPage}>
+            Next Page
+          </button>
         )}
       </div>
     </div>

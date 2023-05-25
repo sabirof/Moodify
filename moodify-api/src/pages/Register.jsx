@@ -1,23 +1,31 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-function Login() {
+function Register() {
+  const { createUser } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {login} = useContext(AuthContext)
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleLogin = (e) => {
-    console.log("password", email, password);
-    login(email, password);
+
+  const handleRegister = () => {
+    console.log("email, password", email, password);
+    registerUser(email, password);
   };
+
+  const registerUser = (email, password) => {
+    createUser(email, password);
+  };
+
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <div>
         <input
           type="email"
@@ -35,10 +43,10 @@ function Login() {
           onChange={handlePasswordChange}
         />
         <label htmlFor="password">Password</label>
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleRegister}>Register</button>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;
