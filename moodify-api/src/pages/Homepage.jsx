@@ -120,7 +120,7 @@ function Homepage() {
         handlePopularityChange={handlePopularityChange}
       />
       {user && (
-        <p>Welcome, {user.email}! You are logged in.</p>
+        <p>Welcome, {user.email}! You are logged in. Feel like watching a movie?</p>
       )}
       {movies.length > 0 ? (
         <div className='container'>{renderMovies()}</div>

@@ -37,6 +37,7 @@ function Login() {
         <label htmlFor="password">Password</label>
         <button onClick={handleLogin}>Login</button>
       </div>
+      
     </div>
   );
 }

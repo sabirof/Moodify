@@ -19,7 +19,7 @@ function Navbar() {
           <Link to="/genres" className="nav-link">Genres</Link>
         </li>
         <li className="nav-item">
-          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/moodify" className="nav-link">Moodify</Link>
         </li>
       </ul>
       

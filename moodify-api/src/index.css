@@ -65,11 +65,21 @@ h1 {
   max-width: 228.75px;
   min-height: 358.13px;
   margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover {
+  background-color: #f5f5f5;
 }
 
 .movie-cover {
   width: 100%;
   height: auto;
+  margin-bottom: 10px;
 }
 
 .imdb-score {
@@ -81,6 +91,13 @@ h1 {
   padding: 5px;
   border-radius: 5px;
   font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.score {
+  margin-right: 5px;
   font-weight: bold;
 }
 
@@ -101,6 +118,50 @@ h1 {
   font-size: 16px;
   margin-right: 5px;
 }
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background-color:darkslategray;
+  padding: 20px;
+  max-width: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 50px;
+  color:cornflowerblue
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+}
+
+
 
 /* Buttons */
 .prev-btn,

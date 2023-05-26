@@ -22,7 +22,7 @@ function Filters({ handleGenreChange, handleYearChange, handlePopularityChange }
   <option value="878">Sci-Figh Hunty Shuffletron 6900</option>
   <option value="10770">TV Movie Madness</option>
   <option value="53">Thrill-o-matic: Scream Queens</option>
-  <option value="10752">War-tastic Wonderland</option>
+  <option value="10752">Straight Men Stuff</option>
   <option value="37">Wild West Whimsy</option>
         
       </select>
