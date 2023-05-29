@@ -132,33 +132,46 @@ h1 {
 }
 
 .modal {
-  background-color:darkslategray;
+  background-color:#646cff;
   padding: 20px;
-  max-width: 300px;
-  width: 100%;
+  max-width: 80%;
+  width: 500px; /* Adjust this value based on your desired width */
+  max-height: 80vh;
+  overflow-y: auto;
   position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-.close-btn {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 50px;
+
+  .close-btn {
+    border: none;
+    background-color:darkgrey;
+    cursor: pointer;
+    font-size: 24px;
   color:cornflowerblue
 }
 
 .modal-body {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-body p {
   margin-bottom: 10px;
+  word-wrap: break-word;
+}
+.modal-poster {
+  max-width: 50%;
+  height: auto;
+  margin-bottom: 10px;
+  max-height:100%;
 }
 
 

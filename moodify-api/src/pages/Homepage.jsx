@@ -99,9 +99,9 @@ function Homepage() {
 
   return (
     <div className='App'>
-      <a href="/http://127.0.0.1:5173/" className="homepage-link">
+      
         <h1>Moodify App</h1>
-      </a>
+      
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
           className='search-bar'
