@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import { AuthContextProvider } from "./context/AuthContext";
 import Register from "./pages/Register";
 import Navbar from "./pages/Navbar";
+import Moodify from "./pages/Moodify";
+
 
 function App() {
   console.log("app", app);
@@ -21,6 +23,7 @@ function App() {
         <Route path="/genres" element={<Genres />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/moodify" element={<Moodify />} />
       </Routes>
       </div>
     </AuthContextProvider>
