@@ -21,6 +21,9 @@ function Navbar() {
         <li className="nav-item">
           <Link to="/moodify" className="nav-link">Moodify</Link>
         </li>
+        <li className="nav-item">
+          <Link to="/chat" className="nav-link">Chat</Link>
+        </li>
       </ul>
       
       <ul className="navbar-nav ml-auto"> 
