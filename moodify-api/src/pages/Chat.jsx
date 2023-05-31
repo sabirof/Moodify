@@ -1,13 +1,12 @@
+import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import React from "react";
 import { db } from "../FireConfig/FireConfig";
-import { useState } from "react";
-import { useEffect } from "react";
-import ProtectedRoute from "../routes/ProtectedRoute";
-
+import MessageForm from "./MessageForm";
+import "./Chat.css";
 
 function Chat() {
   const [messages, setMessages] = useState([]);
+
   const getMessages = async () => {
     const querySnapshot = await getDocs(collection(db, "chat"));
     const messagesArray = [];
@@ -28,20 +27,21 @@ function Chat() {
   }, []);
 
   return (
-    <div>
-      <h1>Chat</h1>
-      <div>
+    <div className="chat-container">
+      <h1 className="chat-heading">Chat</h1>
+      <div className="message-container">
         {messages &&
-          messages.map((msg,i) => { console.log(msg);
-            return (
-              <div key={i}>
-                <p>{msg.text}</p>
-                <p>{msg.author}</p>
-                <p>{transformDate(msg.date.seconds)}</p>
-              </div>
-            );
-          })}
+          messages.map((msg, i) => (
+            <div key={i} className="chat-message">
+              <div className="message-bubble">
+              <p className="message-text">{msg.text}</p>
+              <p className="message-author">{msg.author}</p>
+              <p className="message-date">{transformDate(msg.date.seconds)}</p>
+            </div>
+            </div>
+          ))}
       </div>
+      <MessageForm />
     </div>
   );
 }

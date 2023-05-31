@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Navbar from "./pages/Navbar";
 import Chat from "./pages/Chat";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import MessageForm from "./pages/MessageForm";
 
 
 
@@ -30,6 +31,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Chat />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/messageform"
+          element={
+            <ProtectedRoute>
+              <MessageForm />
             </ProtectedRoute>
           }
         />
