@@ -10,6 +10,8 @@ import Navbar from "./pages/Navbar";
 import Chat from "./pages/Chat";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import MessageForm from "./pages/MessageForm";
+import Moodify from "./pages/Moodify";
+
 
 
 
@@ -24,6 +26,7 @@ function App() {
       
         <Route path="/home" element={<Homepage />} />
         <Route path="/genres" element={<Genres />} />
+        <Route path="/moodify" element={<Moodify />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route

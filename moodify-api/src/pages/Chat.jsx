@@ -26,18 +26,24 @@ function Chat() {
     getMessages();
   }, []);
 
+  const currentUser = "wow@wow.com"; 
+  
+
   return (
     <div className="chat-container">
       <h1 className="chat-heading">Chat</h1>
       <div className="message-container">
         {messages &&
           messages.map((msg, i) => (
-            <div key={i} className="chat-message">
+            <div
+              key={i}
+              className={`chat-message ${msg.author === currentUser ? 'user' : ''}`}
+            >
               <div className="message-bubble">
-              <p className="message-text">{msg.text}</p>
-              <p className="message-author">{msg.author}</p>
-              <p className="message-date">{transformDate(msg.date.seconds)}</p>
-            </div>
+                <p className="message-text">{msg.text}</p>
+                <p className="message-author">{msg.author}</p>
+                <p className="message-date">{transformDate(msg.date.seconds)}</p>
+              </div>
             </div>
           ))}
       </div>

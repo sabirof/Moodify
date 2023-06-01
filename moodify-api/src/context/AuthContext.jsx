@@ -14,7 +14,7 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if a user is logged in from localStorage
+    // Checking if a user is logged in from localStorage
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
@@ -23,13 +23,17 @@ export const AuthContextProvider = (props) => {
 
   const createUser = async (email, password, username) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-  
-      // Update the user's display name
-      await updateProfile(user, { displayName: username });
-  
+      user.displayName = username; // Set the display name (username) of the user
+      
       setUser(user);
+
+      // Store the logged in user in localStorage
       localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
       const errorCode = error.code;
@@ -38,9 +42,6 @@ export const AuthContextProvider = (props) => {
       setUser(null);
     }
   };
-  
-  
-  
 
   const login = async (email, password) => {
     try {

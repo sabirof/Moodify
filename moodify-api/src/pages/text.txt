@@ -1,0 +1,52 @@
+const moods = [
+        {
+          name: "Excited",
+          genre: "Action/Adventure",
+          ids: [28]
+        },
+        {
+          name: "Relaxed",
+          genre: "Drama/Romance",
+          ids: [18, 10749]
+        },
+        {
+          name: "Adventurous",
+          genre: "Fantasy/Sci-Fi",
+          ids: [14, 878]
+        },
+        {
+          name: "Romantic",
+          genre: "Romance/Drama",
+          ids: [10749, 18]
+        },
+        {
+          name: "Thrilling",
+          genre: "Thriller/Mystery",
+          ids: [53, 9648]
+        },
+        {
+          name: "Inspirational",
+          genre: "Biography/Drama",
+          ids: [18, 36]
+        },
+        {
+          name: "Nostalgic",
+          genre: "Classic/Period",
+          ids: [36]
+        },
+        {
+          name: "Funny",
+          genre: "Comedy",
+          ids: [35]
+        },
+        {
+          name: "Mysterious",
+          genre: "Mystery/Crime",
+          ids: [9648, 80]
+        },
+        {
+          name: "Thoughtful",
+          genre: "Drama/Indie",
+          ids: [18]
+        }
+      ];

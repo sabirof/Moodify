@@ -1,0 +1,49 @@
+.movie-randomizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color:darkslategrey;
+  }
+  
+  .round-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #336699;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .movie-poster {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+  
+  .movie-details {
+    max-width: 400px;
+    background-color;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .movie-details h2 {
+    margin-top: 0;
+  }
+  
+  .movie-details .description {
+    margin-top: 10px;
+  }
+  
