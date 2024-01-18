@@ -1,3 +1,2 @@
-[build]
-command = "npm install && vite build"  # replace this with your build command
-publish = "dist"           # replace this with the directory to deploy
+command = "npm install -g vite && npm install && vite build"
+publish = "dist"
