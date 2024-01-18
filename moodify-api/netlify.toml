@@ -1,2 +1,3 @@
-command = "npm install -g vite && npm install && vite build"
+[build]
+command = "npm install && npm run build"
 publish = "dist"
