@@ -1,49 +1,77 @@
 .movie-randomizer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color:darkslategrey;
-  }
-  
-  .round-button {
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: #336699;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .suggestion {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .movie-poster {
-    width: 200px;
-    height: auto;
-    margin-right: 20px;
-    border-radius: 5px;
-  }
-  
-  .movie-details {
-    max-width: 400px;
-    background-color;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .movie-details h2 {
-    margin-top: 0;
-  }
-  
-  .movie-details .description {
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-color: darkslategrey;
+}
+
+.round-button {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #336699;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-poster {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.movie-details {
+  max-width: 400px;
+  background-color:#336699;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.movie-details h2 {
+  margin-top: 0;
+}
+
+.movie-details .description {
+  margin-top: 10px;
+}
+
+.text-message {
+  max-width: 400px;
+}
+
+/* .imdb-score {
+  display: flex;
+  align-items: center;
+  margin-top: 830px;
+  margin-right: 1100px;
+  font-size: 16px;
+}
+
+.imdb-score span {
+  margin-right: 5px;
+}
+
+.imdb-score span::before {
+  content: '⭐️';
+} */
+h1 {
+  color:bisque
+}
+.text-message p {
+  font-family: "Arial", sans-serif; 
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}

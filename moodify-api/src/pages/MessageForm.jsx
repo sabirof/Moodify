@@ -18,10 +18,10 @@ function MessageForm() {
     try {
       await addDoc(collection(db, "chat"), {
         text: message,
-        author: user.email, // Assuming you have the user's email available in the user context
+        author: user.email, 
         date: new Date(),
       });
-      setMessage(""); // Clear the input field after submitting the message
+      setMessage(""); 
     } catch (error) {
       console.error("Error adding message: ", error);
     }

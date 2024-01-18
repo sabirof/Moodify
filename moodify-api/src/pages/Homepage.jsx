@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import MovieCard from '../MovieCard';
-import Filters from '../Filters';
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
+import MovieCard from "./MovieCard";
+import Filters from "../Filters";
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Homepage() {
   const { user } = useContext(AuthContext);
-  const API_URL = 'https://api.themoviedb.org/3';
-  const API_KEY = '4909c193bcb0b13deddde40b3469602f';
-  const [searchQuery, setSearchQuery] = useState('');
+  const API_URL = "https://api.themoviedb.org/3";
+  const API_KEY = "4909c193bcb0b13deddde40b3469602f";
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [genreFilter, setGenreFilter] = useState('');
-  const [yearFilter, setYearFilter] = useState('');
-  const [popularityFilter, setPopularityFilter] = useState('');
+  const [genreFilter, setGenreFilter] = useState("");
+  const [yearFilter, setYearFilter] = useState("");
+  const [popularityFilter, setPopularityFilter] = useState("");
 
-  console.log('homepage');
+  // console.log("homepage");
 
   const fetchMovies = async () => {
     try {
@@ -41,7 +42,7 @@ function Homepage() {
         }
 
         if (filterParams.length > 0) {
-          url += `&${filterParams.join('&')}`;
+          url += `&${filterParams.join("&")}`;
         }
       }
       console.log(url);
@@ -55,10 +56,10 @@ function Homepage() {
       setMovies(data.results);
       setTotalPages(data.total_pages);
     } catch (error) {
-      console.error('Error fetching movies:', error);
+      console.error("Error fetching movies:", error);
     }
   };
-
+//Event handlers
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
@@ -96,15 +97,14 @@ function Homepage() {
     movies.map((movie) => (
       <MovieCard key={movie.id} movie={movie} imdb_score={movie.vote_average} />
     ));
-
+//render
   return (
-    <div className='App'>
-      
-        <h1>Moodify App</h1>
-      
+    <div className="App">
+      <h1>Moodify</h1>
+
       <form onSubmit={handleSearchSubmit} className="search-form">
         <input
-          className='search-bar'
+          className="search-bar"
           type="text"
           value={searchQuery}
           onChange={handleSearchChange}
@@ -120,21 +120,23 @@ function Homepage() {
         handlePopularityChange={handlePopularityChange}
       />
       {user && (
-        <p>Welcome, {user.email}! You are logged in. Feel like watching a movie?</p>
+        <p>
+          Welcome, {user.email}! You are logged in. Feel like watching a movie?
+        </p>
       )}
       {movies.length > 0 ? (
-        <div className='container'>{renderMovies()}</div>
+        <div className="container">{renderMovies()}</div>
       ) : (
         <p>No movies found.</p>
       )}
-      <div className='btn-container'>
+      <div className="btn-container">
         {currentPage > 1 && (
-          <button className='prev-btn' onClick={handlePrevPage}>
+          <button className="prev-btn" onClick={handlePrevPage}>
             Previous Page
           </button>
         )}
         {currentPage < totalPages && (
-          <button className='next-btn' onClick={handleNextPage}>
+          <button className="next-btn" onClick={handleNextPage}>
             Next Page
           </button>
         )}

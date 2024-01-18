@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 import { auth } from "../FireConfig/FireConfig";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -30,7 +31,7 @@ export const AuthContextProvider = (props) => {
       );
       const user = userCredential.user;
       user.displayName = username; // Set the display name (username) of the user
-      
+
       setUser(user);
 
       // Store the logged in user in localStorage

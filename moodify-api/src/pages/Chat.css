@@ -1,6 +1,6 @@
 /* Chat Container */
 .chat-container {
-  background-color:#535bf2
+  background-color:dodgerblue;
   padding: 20px;
   border-radius: 10px;
 }
@@ -13,7 +13,7 @@
 }
 
 .chat-message .message-bubble {
-  background-color: #6cd8d8;
+  background-color:antiquewhite;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 
 .chat-message .message-text {
   font-size: 18px;
-  color:coral;
+  color:black;
   margin-bottom: 5px;
 }
 
@@ -38,7 +38,7 @@
 
 /* User Messages */
 .chat-message.user .message-bubble {
-  background-color: #646cff;
+  background-color:darksalmon;
   color: #ffffff;
 }
 
@@ -93,7 +93,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #646cff;
+  background-color:blue;
   color: #ffffff;
   border: none;
   border-radius: 5px;
